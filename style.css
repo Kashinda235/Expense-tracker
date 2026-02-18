@@ -1,0 +1,13 @@
+
+        :root { --primary: #6366f1; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
+        body { font-family: sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; padding: 20px; }
+        .container { width: 100%; max-width: 500px; background: var(--card); padding: 2rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        h2 { margin-top: 0; color: var(--primary); }
+        .input-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        input, select { padding: 12px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: white; }
+        button { padding: 12px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        button:hover { opacity: 0.9; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #334155; }
+        .total { font-size: 1.2rem; margin-top: 20px; text-align: right; color: #10b981; }
+        .delete-btn { color: #ef4444; cursor: pointer; font-weight: bold; }
