@@ -1,29 +1,33 @@
 const container = document.getElementById('coin-container');
 
 function createCoin() {
+    const wrapper = document.createElement('div');
     const coin = document.createElement('div');
+    
+    wrapper.classList.add('fall-wrapper');
     coin.classList.add('coin');
 
-    // Randomize properties
-    const size = Math.random() * (30 - 15) + 15 + 'px'; // Size between 15px and 30px
-    const left = Math.random() * 100 + 'vw';            // Random horizontal start
-    const duration = Math.random() * (4 - 2) + 2 + 's'; // Fall speed between 2s and 4s
-    const delay = Math.random() * 5 + 's';              // Random start delay
-
-    // Apply styles
+    // Randomize Size
+    const size = Math.floor(Math.random() * 20) + 15 + 'px';
     coin.style.width = size;
     coin.style.height = size;
-    coin.style.left = left;
-    coin.style.animationDuration = `${duration}, ${Math.random() * 1 + 0.5}s`;
-    coin.style.animationDelay = `0s, ${delay}`;
 
-    container.appendChild(coin);
+    // Randomize Position & Speed
+    wrapper.style.left = Math.random() * 100 + 'vw';
+    const fallDuration = Math.random() * 3 + 2 + 's'; // 2-5 seconds to fall
+    const flipDuration = Math.random() * 0.5 + 0.5 + 's'; // 0.5-1 second to flip
+    
+    wrapper.style.animationDuration = fallDuration;
+    coin.style.animationDuration = flipDuration;
 
-    // Remove coin after animation ends to keep DOM clean
+    wrapper.appendChild(coin);
+    container.appendChild(wrapper);
+
+    // Remove element after it falls off screen
     setTimeout(() => {
-        coin.remove();
-    }, parseFloat(duration) * 1000);
+        wrapper.remove();
+    }, parseFloat(fallDuration) * 1000);
 }
 
-// Generate a new coin every 200ms
-setInterval(createCoin, 200);
+// Spawn coins frequently
+setInterval(createCoin, 150);
