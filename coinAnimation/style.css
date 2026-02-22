@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Prevents scrollbars during the rain */
+    background-color: #1a1a1a;
+}
+
+#coin-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Allows clicking through the coins */
+}
+
+.coin {
+    position: absolute;
+    background-color: #ffd700;
+    border-radius: 50%;
+    border: 2px solid #daa520;
+    box-shadow: inset -4px -4px 0px rgba(0,0,0,0.1);
+    animation: fall linear infinite, flip linear infinite;
+}
+
+/* Vertical movement */
+@keyframes fall {
+    0% { transform: translateY(-10vh); }
+    100% { transform: translateY(110vh); }
+}
+
+/* Flipping/Rotating effect */
+@keyframes flip {
+    0% { transform: rotateY(0deg) rotateX(0deg); }
+    100% { transform: rotateY(360deg) rotateX(180deg); }
+}
