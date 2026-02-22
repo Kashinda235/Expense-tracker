@@ -16,6 +16,15 @@ function createCoin() {
     wrapper.style.left = Math.random() * 100 + 'vw';
     const fallDuration = Math.random() * 3 + 2 + 's'; // 2-5 seconds to fall
     const flipDuration = Math.random() * 0.5 + 0.5 + 's'; // 0.5-1 second to flip
+
+    // Randomize z-index for depth
+    // Using values between -1 and -5
+    wrapper.style.zIndex = Math.floor(Math.random() * -5) - 1;
+
+    // Optional: Make "deeper" coins slightly blurry or darker for realism
+    if (parseInt(wrapper.style.zIndex) < -3) {
+        coin.style.filter = "brightness(0.7) blur(1px)";
+    }
     
     wrapper.style.animationDuration = fallDuration;
     coin.style.animationDuration = flipDuration;
