@@ -1,5 +1,9 @@
+import { User } from "./user";
+
+// let allUsers = JSON.parse(localStorage.getItem('expenses')) || [];
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
+user
 function updateUI() {
     const list = document.getElementById('expense-list');
     const totalDisplay = document.getElementById('total-amount');
