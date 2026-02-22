@@ -1,43 +1,47 @@
-    let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+import { User } from "./user";
 
-    function updateUI() {
-        const list = document.getElementById('expense-list');
-        const totalDisplay = document.getElementById('total-amount');
-        list.innerHTML = '';
-        let total = 0;
+// let allUsers = JSON.parse(localStorage.getItem('expenses')) || [];
+let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
-        expenses.forEach((exp, index) => {
-            total += parseFloat(exp.amount);
-            list.innerHTML += `
-                <tr>
-                    <td>${exp.desc}</td>
-                    <td>${exp.category}</td>
-                    <td>$${exp.amount}</td>
-                    <td><span class="delete-btn" onclick="deleteExpense(${index})">✕</span></td>
-                </tr>
-            `;
-        });
+user
+function updateUI() {
+    const list = document.getElementById('expense-list');
+    const totalDisplay = document.getElementById('total-amount');
+    list.innerHTML = '';
+    let total = 0;
 
-        totalDisplay.innerText = total.toFixed(2);
-        localStorage.setItem('expenses', JSON.stringify(expenses));
-    }
+    expenses.forEach((exp, index) => {
+        total += parseFloat(exp.amount);
+        list.innerHTML += `
+            <tr>
+                <td>${exp.desc}</td>
+                <td>${exp.category}</td>
+                <td>$${exp.amount}</td>
+                <td><span class="delete-btn" onclick="deleteExpense(${index})">✕</span></td>
+            </tr>
+        `;
+    });
 
-    function addExpense() {
-        const desc = document.getElementById('desc').value;
-        const amount = document.getElementById('amount').value;
-        const category = document.getElementById('category').value;
+    totalDisplay.innerText = total.toFixed(2);
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+}
 
-        if(desc && amount) {
-            expenses.push({ desc, amount, category });
-            updateUI();
-            document.getElementById('desc').value = '';
-            document.getElementById('amount').value = '';
-        }
-    }
+function addExpense() {
+    const desc = document.getElementById('desc').value;
+    const amount = document.getElementById('amount').value;
+    const category = document.getElementById('category').value;
 
-    function deleteExpense(index) {
-        expenses.splice(index, 1);
+    if(desc && amount) {
+        expenses.push({ desc, amount, category });
         updateUI();
+        document.getElementById('desc').value = '';
+        document.getElementById('amount').value = '';
     }
+}
 
-    updateUI(); // Initial load
+function deleteExpense(index) {
+    expenses.splice(index, 1);
+    updateUI();
+}
+
+updateUI(); // Initial load
